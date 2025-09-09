@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National Plastics - Premium PP Tubes & Bags Manufacturer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Philosopher:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Moderate spacing improvements for better flow */
+        section {
+            padding: 45px 0;
+        }
+
+        .products-section {
+            padding: 40px 0;
+        }
+
+        .converter-section {
+            padding: 40px 0;
+        }
+
+        .why-choose-section {
+            padding: 40px 0;
+        }
+
+        .about-section {
+            padding: 40px 0;
+        }
+
+        .contact-section {
+            padding: 40px 0;
+        }
+
+        /* Moderate internal spacing */
+        .container {
+            padding: 0 20px;
+        }
+
+        .products-grid {
+            margin-top: 25px;
+        }
+
+        .benefits-grid {
+            margin-top: 25px;
+        }
+
+        .converter-tool {
+            margin-top: 25px;
+        }
+
+        /* Section headers with good balance */
+        section h2 {
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .section-subtitle {
+            margin-bottom: 25px;
+        }
+
+        /* Benefits highlight moderate spacing */
+        .benefits-highlight {
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        /* Mobile responsive - moderate compression */
+        @media (max-width: 768px) {
+            section {
+                padding: 35px 0;
+            }
+
+            /* Keep hero section original on mobile too */
+            .products-section,
+            .converter-section,
+            .why-choose-section,
+            .about-section,
+            .contact-section {
+                padding: 30px 0;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+
+            .products-grid,
+            .benefits-grid {
+                margin-top: 20px;
+            }
+
+            .benefits-highlight {
+                margin-top: 25px;
+                margin-bottom: 15px;
+            }
+
+            section h2 {
+                margin-bottom: 15px;
+            }
+
+            .section-subtitle {
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            section {
+                padding: 30px 0;
+            }
+
+            /* Keep hero section original on small mobile too */
+            .products-section,
+            .converter-section,
+            .why-choose-section,
+            .about-section,
+            .contact-section {
+                padding: 25px 0;
+            }
+
+            .container {
+                padding: 0 12px;
+            }
+
+            .benefits-highlight {
+                margin-top: 20px;
+                margin-bottom: 12px;
+            }
+        }
+
+        /* Product Image Styling - Square with smooth edges */
+        .product-image {
+            width: 100%;
+            height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-radius: 15px;
+            background: #fff;
+            margin-bottom: 15px;
+            border: 2px solid #f0f0f0;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .product-img {
+            width: 260px;
+            height: 260px;
+            object-fit: cover;
+            object-position: center center;
+            border-radius: 12px;
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: optimize-quality;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            transform: translateZ(0);
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .product-card:hover .product-img {
+            transform: scale(1.03);
+        }
+
+        .product-image::after {
+            content: '🖼️ View Gallery';
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0,123,255,0.9);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .product-image:hover::after {
+            opacity: 1;
+        }
+
+        /* Responsive product image sizes */
+        @media (max-width: 768px) {
+            .product-image {
+                height: 250px;
+                border-radius: 12px;
+                border: 1.5px solid #f0f0f0;
+            }
+
+            .product-img {
+                width: 230px;
+                height: 230px;
+                border-radius: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product-image {
+                height: 220px;
+                border-radius: 10px;
+                border: 1px solid #f0f0f0;
+            }
+
+            .product-img {
+                width: 200px;
+                height: 200px;
+                border-radius: 8px;
+            }
+        }
+
+        /* Image Gallery Modal Styling */
+        .gallery-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            overflow: auto;
+        }
+
+        .gallery-content {
+            position: relative;
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 0;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .gallery-header {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .gallery-title {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .gallery-close {
+            color: white;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-close:hover {
+            opacity: 0.7;
+        }
+
+        .gallery-slider {
+            position: relative;
+            padding: 20px;
+        }
+
+        .gallery-images {
+            display: flex;
+            overflow-x: auto;
+            gap: 15px;
+            padding: 10px 0;
+            scroll-behavior: smooth;
+        }
+
+        .gallery-images::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .gallery-images::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .gallery-images::-webkit-scrollbar-thumb {
+            background: #007bff;
+            border-radius: 4px;
+        }
+
+        .gallery-image-item {
+            flex: 0 0 250px;
+            height: 250px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery-image-item:hover {
+            border-color: #007bff;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,123,255,0.3);
+        }
+
+        .gallery-image-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-image-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .main-image-viewer {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .main-gallery-image {
+            max-width: 100%;
+            max-height: 400px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .gallery-nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .gallery-nav-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s ease;
+        }
+
+        .gallery-nav-btn:hover {
+            background: #0056b3;
+        }
+
+        .gallery-nav-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* Mobile responsive for gallery */
+        @media (max-width: 768px) {
+            .gallery-content {
+                width: 95%;
+                margin: 10% auto;
+            }
+
+            .gallery-image-item {
+                flex: 0 0 200px;
+                height: 200px;
+            }
+
+            .main-gallery-image {
+                max-height: 300px;
+            }
+
+            .gallery-title {
+                font-size: 1.2rem;
+            }
+
+            .gallery-header {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-image-item {
+                flex: 0 0 150px;
+                height: 150px;
+            }
+
+            .main-gallery-image {
+                max-height: 250px;
+            }
+        }
+
+        /* Radio Button Styling for Converter Selection */
+        .converter-type-selection {
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 15px 25px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            background: #f8f9fa;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            min-width: 280px;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .radio-option:hover {
+            border-color: #007bff;
+            background: #e7f3ff;
+        }
+
+        .radio-option input[type="radio"] {
+            margin-right: 12px;
+            accent-color: #007bff;
+            width: 18px;
+            height: 18px;
+        }
+
+        .radio-text {
+            font-size: 16px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .radio-option input[type="radio"]:checked + .radio-text {
+            color: #007bff;
+            font-weight: 600;
+        }
+
+        .radio-option:has(input:checked) {
+            border-color: #007bff;
+            background: #e7f3ff;
+        }
+
+        /* Converter subtitle styling - Force visibility */
+        .converter-subtitle,
+        p.converter-subtitle {
+            font-size: 18px !important;
+            color: #2c3e50 !important;
+            margin: 0 0 25px 0 !important;
+            padding: 15px 20px !important;
+            text-align: center !important;
+            font-weight: 500 !important;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            line-height: 1.4 !important;
+            background: #f8f9fa !important;
+            border: 1px solid #e9ecef !important;
+            border-radius: 8px !important;
+            position: relative !important;
+            z-index: 1 !important;
+            width: 100% !important;
+            height: auto !important;
+            max-height: none !important;
+            overflow: visible !important;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+        }
+
+        @media (max-width: 768px) {
+            .converter-type-selection {
+                flex-direction: column;
+                gap: 15px;
+                align-items: center;
+            }
+
+            .radio-option {
+                padding: 12px 20px;
+                font-size: 14px;
+                min-width: 250px;
+            }
+
+            .radio-text {
+                font-size: 14px;
+            }
+
+            .converter-subtitle {
+                font-size: 14px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .radio-option {
+                min-width: 100%;
+                padding: 10px 15px;
+            }
+
+            .radio-text {
+                font-size: 13px;
+            }
+        }
+
+        /* Location Section Styling */
+        .location-section {
+            padding: 40px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .location-content {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .location-info {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            width: 100%;
+        }
+
+        .location-card,
+        .business-hours {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .location-card:hover,
+        .business-hours:hover {
+            transform: translateY(-5px);
+        }
+
+        .location-icon,
+        .hours-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .location-card h3,
+        .business-hours h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .location-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .location-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .location-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 20px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .view-map {
+            background: #007bff;
+            color: white;
+        }
+
+        .view-map:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .btn-icon {
+            margin-right: 10px;
+            font-size: 1.1rem;
+        }
+
+        .hours-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .hour-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .hour-item:last-child {
+            border-bottom: none;
+        }
+
+        .day {
+            font-weight: 500;
+            color: #2c3e50;
+        }
+
+        .time {
+            color: #666;
+        }
+
+        /* Mobile Responsive for Location Section */
+        @media (max-width: 768px) {
+            .location-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .location-card,
+            .business-hours {
+                padding: 25px;
+            }
+
+            .location-buttons {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .location-btn {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .location-card,
+            .business-hours {
+                padding: 20px;
+            }
+
+            .location-icon,
+            .hours-icon {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    <script>
+        // Converter Type Selection JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            const converterRadios = document.querySelectorAll('input[name="converterType"]');
+            const bagsToKgsConverter = document.getElementById('bagsToKgsConverter');
+            const kgsToBagsConverter = document.getElementById('kgsToBagsConverter');
+
+            // Handle converter type change
+            converterRadios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    if (this.value === 'bagsToKgs') {
+                        bagsToKgsConverter.style.display = 'block';
+                        kgsToBagsConverter.style.display = 'none';
+                    } else {
+                        bagsToKgsConverter.style.display = 'none';
+                        kgsToBagsConverter.style.display = 'block';
+                    }
+                });
+            });
+
+            // Original converter functionality (Bags to Kgs)
+            const widthInput = document.getElementById('width');
+            const lengthInput = document.getElementById('length');
+            const thicknessInput = document.getElementById('thickness');
+            const bagsInput = document.getElementById('bags');
+            const resultDisplay = document.getElementById('result');
+            const micronDisplay = document.getElementById('micronDisplay');
+
+            function calculateKgs() {
+                const width = parseFloat(widthInput.value) || 0;
+                const length = parseFloat(lengthInput.value) || 0;
+                const thickness = parseFloat(thicknessInput.value) || 0;
+                const bags = parseFloat(bagsInput.value) || 0;
+
+                if (width && length && thickness && bags) {
+                    const weight = (width * length * thickness * bags) / 3300000;
+                    resultDisplay.textContent = `~${weight.toFixed(2)}`;
+                } else {
+                    resultDisplay.textContent = '~0';
+                }
+            }
+
+            // New converter functionality (Kgs to Bags)
+            const width2Input = document.getElementById('width2');
+            const length2Input = document.getElementById('length2');
+            const thickness2Input = document.getElementById('thickness2');
+            const weightInput = document.getElementById('weight');
+            const result2Display = document.getElementById('result2');
+            const micron2Display = document.getElementById('micronDisplay2');
+
+            function calculateBags() {
+                const width = parseFloat(width2Input.value) || 0;
+                const length = parseFloat(length2Input.value) || 0;
+                const thickness = parseFloat(thickness2Input.value) || 0;
+                const weight = parseFloat(weightInput.value) || 0;
+
+                if (width && length && thickness && weight) {
+                    const numberOfBags = (3300000 * weight) / (width * length * thickness);
+                    result2Display.textContent = `~${Math.round(numberOfBags)}`;
+                } else {
+                    result2Display.textContent = '~0';
+                }
+            }
+
+            // Micron conversion for both converters
+            function updateMicrons(thicknessValue, displayElement) {
+                const microns = thicknessValue / 4;
+                displayElement.textContent = `(${microns} microns)`;
+            }
+
+            // Event listeners for first converter
+            [widthInput, lengthInput, thicknessInput, bagsInput].forEach(input => {
+                input.addEventListener('input', calculateKgs);
+            });
+
+            thicknessInput.addEventListener('input', function() {
+                updateMicrons(this.value, micronDisplay);
+            });
+
+            // Event listeners for second converter
+            [width2Input, length2Input, thickness2Input, weightInput].forEach(input => {
+                input.addEventListener('input', calculateBags);
+            });
+
+            thickness2Input.addEventListener('input', function() {
+                updateMicrons(this.value, micron2Display);
+            });
+
+            // Image Gallery Functionality
+            const galleryData = {
+                'pp-bags': {
+                    title: 'Heat Seal - PP Bags Gallery',
+                    images: [
+                        'pp plain cover 2.jpg',
+                        'pp plain cover.jpg',
+                        'pp plain cover 3.jpg',
+                        'pp plain cover 4.jpg'
+                    ]
+                },
+                'printed-bags': {
+                    title: 'Custom Printed PP Bags Gallery',
+                    images: [
+                        'printing cover.jpg'
+                    ]
+                },
+                'pp-tubes': {
+                    title: 'PP Tubes Gallery',
+                    images: [
+                        'pptubes ai.jpg',
+                        'pptubes ai 2.jpg',
+                        'pptubes ai 3.jpg',
+                        'pptubes ai 4.jpg',
+                        'pptubes 1.jpg',
+                        'pptubes 2.jpg',
+                        'pptubes 3.jpg',
+                        'pptubes 4.jpg',
+                        'pptubes 5.jpg'
+                    ]
+                }
+            };
+
+            let currentGallery = null;
+            let currentImageIndex = 0;
+            let validImages = [];
+
+            window.openGallery = function(galleryType) {
+                currentGallery = galleryData[galleryType];
+                if (!currentGallery) return;
+
+                currentImageIndex = 0;
+                validImages = [];
+                const modal = document.getElementById('galleryModal');
+                const title = document.getElementById('galleryTitle');
+                const mainImage = document.getElementById('mainGalleryImage');
+                const galleryContainer = document.getElementById('galleryImages');
+
+                title.textContent = currentGallery.title;
+                modal.style.display = 'block';
+
+                // Clear previous images
+                galleryContainer.innerHTML = '';
+
+                // Check which images exist and add only valid ones
+                let loadedCount = 0;
+                const totalImages = currentGallery.images.length;
+
+                currentGallery.images.forEach((imageSrc, index) => {
+                    const testImg = new Image();
+                    testImg.onload = function() {
+                        validImages.push({ src: imageSrc, originalIndex: index });
+                        
+                        const imageItem = document.createElement('div');
+                        imageItem.className = 'gallery-image-item';
+                        imageItem.innerHTML = `<img src="${imageSrc}" alt="Product Image ${index + 1}">`;
+                        imageItem.onclick = () => showMainImage(validImages.length - 1);
+                        galleryContainer.appendChild(imageItem);
+
+                        // Show first valid image when first one loads
+                        if (validImages.length === 1) {
+                            showMainImage(0);
+                            updateNavButtons();
+                        }
+                        
+                        loadedCount++;
+                        if (loadedCount === totalImages) {
+                            updateNavButtons();
+                        }
+                    };
+                    testImg.onerror = function() {
+                        loadedCount++;
+                        if (loadedCount === totalImages && validImages.length === 0) {
+                            // If no images loaded, show placeholder
+                            galleryContainer.innerHTML = '<p style="text-align: center; padding: 20px;">No additional images available</p>';
+                            mainImage.src = currentGallery.images[0]; // Show main image at least
+                        }
+                    };
+                    testImg.src = imageSrc;
+                });
+            };
+
+            window.closeGallery = function() {
+                document.getElementById('galleryModal').style.display = 'none';
+            };
+
+            function showMainImage(index) {
+                if (!validImages || index < 0 || index >= validImages.length) return;
+                
+                currentImageIndex = index;
+                const mainImage = document.getElementById('mainGalleryImage');
+                mainImage.src = validImages[index].src;
+                updateNavButtons();
+            }
+
+            window.nextImage = function() {
+                if (currentImageIndex < validImages.length - 1) {
+                    showMainImage(currentImageIndex + 1);
+                }
+            };
+
+            window.prevImage = function() {
+                if (currentImageIndex > 0) {
+                    showMainImage(currentImageIndex - 1);
+                }
+            };
+
+            function updateNavButtons() {
+                const prevBtn = document.getElementById('prevBtn');
+                const nextBtn = document.getElementById('nextBtn');
+                
+                if (prevBtn && nextBtn) {
+                    prevBtn.disabled = currentImageIndex === 0;
+                    nextBtn.disabled = currentImageIndex === validImages.length - 1;
+                }
+            }
+
+            // Close gallery when clicking outside
+            window.onclick = function(event) {
+                const modal = document.getElementById('galleryModal');
+                if (event.target === modal) {
+                    closeGallery();
+                }
+            };
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="Peacock logo bird logo icon.jpg" alt="National Plastics Logo" class="peacock-logo">
+                </div>
+                <div class="logo-text">
+                    <h1>National Plastics</h1>
+                    <p class="tagline">Premium PP Tubes & Bags Since 1993</p>
+                </div>
+            </div>
+            <nav>
+                <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#converter">Formula</a></li>
+                    <li><a href="#why-choose">Why Choose Us</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section id="home" class="hero-banner">
+            <div class="hero-content">
+                <h2>Manufacturers and Wholesale Suppliers Of PP Tubes & Bags</h2>
+                <p class="hero-description">Leading manufacturer in South India with over 30 years of experience. Specializing in extruded blown film polypropylene tubes and bags with 1,000 tonnes per year production capacity.</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">30+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">1000</span>
+                        <span class="stat-label">Tonnes/Year</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">1993</span>
+                        <span class="stat-label">Founded</span>
+                    </div>
+                </div>
+                <button class="cta-button" onclick="scrollToContact()">Get Quote</button>
+            </div>
+        </section>
+
+        <!-- PRODUCTS SECTION -->
+        <section id="products" class="products-section">
+            <div class="container">
+                <h2>Our Products</h2>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-image" onclick="openGallery('pp-bags')">
+                            <img src="pp plain cover 2.jpg" alt="Heat Seal PP Bags" class="product-img">
+                        </div>
+                        <h3>Heat Seal - PP Bags</h3>
+                        <p>High-quality transparent packaging to ensure that your product remains visible to external viewers. Ideal choice for retail packaging.</p>
+                        <p class="note"><strong>Note:</strong> The final sealing of the top end must be completed using a polybag sealing machine on your end.</p>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image" onclick="openGallery('printed-bags')">
+                            <img src="printing cover.jpg" alt="Custom Printed PP Bags" class="product-img">
+                        </div>
+                        <h3>Heat Seal - Custom Printed PP Bags</h3>
+                        <p>External flexo printing option to ensure your brand is effectively recognized by your target audience.</p>
+                        <p class="note"><strong>Note:</strong> The final sealing of the top end must be completed using a polybag sealing machine on your end.</p>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image" onclick="openGallery('pp-tubes')">
+                            <img src="pptubes ai.jpg" alt="PP Tubes" class="product-img">
+                        </div>
+                        <h3>PP Tubes</h3>
+                        <p>Premium polypropylene tubes manufactured with precision. Perfect for various industrial and commercial applications.</p>
+                        <p class="note">Available in various sizes and specifications to meet your requirements.</p>
+                    </div>
+                </div>
+
+                <!-- Why Select Flat PP Bags -->
+                <div class="benefits-highlight">
+                    <h3>Why Select Flat PP Bags Over Other Packaging?</h3>
+                    <div class="benefits-list">
+                        <div class="benefit-point">💰 Cost-Effective</div>
+                        <div class="benefit-point">💪 Durable</div>
+                        <div class="benefit-point">🔥 Heat-Sealable</div>
+                        <div class="benefit-point">♻️ Recyclable</div>
+                        <div class="benefit-point">👁️ Transparent</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- APPLICATIONS SECTION -->
+        <section class="applications-section">
+            <div class="container">
+                <h2>Where do these flat PP bags go after leaving the factory?</h2>
+                <div class="applications-grid">
+                    <div class="application-card">
+                        <div class="app-icon">🏪</div>
+                        <h3>Retailers & Distributors</h3>
+                        <p>Retailers and wholesalers who procure our PP bags and supply them to various end customers</p>
+                    </div>
+                    <div class="application-card">
+                        <div class="app-icon">🧵</div>
+                        <h3>Textile Industries</h3>
+                        <p>Packaging for fabrics, towels, sarees, lungis, dupattas, dhotis, bedsheets, tablecloths, innerwear, and T-shirts (Primary packaging)</p>
+                    </div>
+                    <div class="application-card">
+                        <div class="app-icon">🍽️</div>
+                        <h3>Food Industries</h3>
+                        <ul>
+                            <li>Masala Industries (Secondary packaging)</li>
+                            <li>Cake shops (Primary packaging)</li>
+                            <li>Chips manufacturers (Primary packaging)</li>
+                            <li>Corn flour manufacturers (Primary packaging)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- KGS CONVERTER SECTION -->
+        <section id="converter" class="converter-section">
+            <div class="container">
+                <h2>Kgs Converter for Flat PP Bags</h2>
+                
+                <!-- Converter Type Selection -->
+                <div class="converter-type-selection">
+                    <label class="radio-option">
+                        <input type="radio" name="converterType" value="bagsToKgs" checked>
+                        <span class="radio-text">Convert Number of Bags to Weight (Kgs)</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="converterType" value="kgsToBags">
+                        <span class="radio-text">Convert Weight (Kgs) to Number of Bags</span>
+                    </label>
+                </div>
+
+                <!-- First Converter: Bags to Kgs -->
+                <div id="bagsToKgsConverter" class="converter-tool">
+                    <p class="converter-subtitle">Converts (Number of Bags Required) to (Kilogram of Bags Required)</p>
+                    <div class="converter-inputs">
+                        <div class="input-group">
+                            <label>Width (in inches) *</label>
+                            <input type="number" id="width" min="4" max="30" placeholder="4-30">
+                        </div>
+                        <div class="input-group">
+                            <label>Length (in inches) *</label>
+                            <input type="number" id="length" min="4" max="30" placeholder="4-30">
+                        </div>
+                        <div class="input-group">
+                            <label>Thickness (in gauges) *</label>
+                            <div class="thickness-input-container">
+                                <input type="number" id="thickness" min="200" max="500" value="280" placeholder="200-500">
+                                <span class="micron-display" id="micronDisplay">(70 microns)</span>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Number of Bags Required *</label>
+                            <input type="number" id="bags" min="1" placeholder="e.g., 21046">
+                        </div>
+                    </div>
+                    <div class="converter-result">
+                        <div class="result-display">
+                            <span class="result-label">Weight in Kgs</span>
+                            <span class="result-value" id="result">~0</span>
+                        </div>
+                        <p class="min-order">(Minimum Order Quantity = 250 kgs)</p>
+                    </div>
+                </div>
+
+                <!-- Second Converter: Kgs to Bags -->
+                <div id="kgsToBagsConverter" class="converter-tool" style="display: none;">
+                    <p class="converter-subtitle">Converts (Weight in Kgs) to (Number of Bags Required)</p>
+                    <div class="converter-inputs">
+                        <div class="input-group">
+                            <label>Width (in inches) *</label>
+                            <input type="number" id="width2" min="4" max="30" placeholder="4-30">
+                        </div>
+                        <div class="input-group">
+                            <label>Length (in inches) *</label>
+                            <input type="number" id="length2" min="4" max="30" placeholder="4-30">
+                        </div>
+                        <div class="input-group">
+                            <label>Thickness (in gauges) *</label>
+                            <div class="thickness-input-container">
+                                <input type="number" id="thickness2" min="200" max="500" value="280" placeholder="200-500">
+                                <span class="micron-display" id="micronDisplay2">(70 microns)</span>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Weight Required (in Kgs) *</label>
+                            <input type="number" id="weight" min="1" placeholder="e.g., 250">
+                        </div>
+                    </div>
+                    <div class="converter-result">
+                        <div class="result-display">
+                            <span class="result-label">Number of Bags</span>
+                            <span class="result-value" id="result2">~0</span>
+                        </div>
+                        <p class="min-order">(Formula: (3300000 × weight) ÷ (width × length × thickness))</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHY CHOOSE US SECTION -->
+        <section id="why-choose" class="why-choose-section">
+            <div class="container">
+                <h2>Why Choose National Plastics Over Other Suppliers?</h2>
+                <p class="section-subtitle">National Plastics is committed to delivering convenience, trust, quality, and competitive pricing, ensuring seamless and efficient packaging solutions for businesses.</p>
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🚚</div>
+                        <h3>Convenience</h3>
+                        <p>We ensure timely delivery so your packaging materials arrive on time.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🤝</div>
+                        <h3>Trust</h3>
+                        <p>We prioritize customer satisfaction with reliable service and consistent support.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">⭐</div>
+                        <h3>Quality</h3>
+                        <p>We use only virgin raw materials to manufacture our products, ensuring superior durability and strength.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">💰</div>
+                        <h3>Pricing</h3>
+                        <p>We offer cost-effective packaging solutions without compromising on quality.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <h2>About Us</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>Founded by Mr. Kandasamy, our company has been a leader in the PP film industry in the southern part of India since 1993. With over 30 years of industry experience, we specialize in the manufacturing and wholesale supply of extruded blown film polypropylene tubes and bags, with an impressive production capacity of 1,000 tonnes per year.</p>
+                        <p>Our mission is to provide high-grade virgin polypropylene bags while ensuring fast and reliable service. We are dedicated to delivering an exceptional packaging experience for our customers, meeting their needs with quality and efficiency.</p>
+                        <div class="company-details">
+                            <div class="detail-item">
+                                <strong>Nature of the Business:</strong> Manufacturing
+                            </div>
+                            <div class="detail-item">
+                                <strong>Year of Company Inception:</strong> 1992
+                            </div>
+                            <div class="detail-item">
+                                <strong>GST Registration Number:</strong> 33AHXPK8556H1ZO
+                            </div>
+                            <div class="detail-item">
+                                <strong>GST Registration Date:</strong> 01-07-2017
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>Company Info</h3>
+                        <div class="contact-item">
+                            <strong>Company Name:</strong> National Plastics
+                        </div>
+                        <div class="contact-item">
+                            <strong>Address:</strong> Rsf No : 1388/1, Plot No : 31, Edissia Industrial Estate, Karur Bye Pass Road, Erode-638002
+                        </div>
+                        <div class="contact-item">
+                            <strong>Phone:</strong> <a href="tel:+919384932216">+91 93849 32216</a>
+                        </div>
+                        <div class="contact-item">
+                            <strong>Email:</strong> <a href="mailto:nationalplasticspks@gmail.com">nationalplasticspks@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <h3>Get Quote</h3>
+                        <form onsubmit="handleFormSubmit(event)">
+                            <input type="text" placeholder="Company Name" required>
+                            <input type="text" placeholder="Location (City, State)" required>
+                            <select required>
+                                <option value="">Select Product Type *</option>
+                                <option value="PP bags">PP bags</option>
+                                <option value="LD bags">LD bags</option>
+                            </select>
+                            <textarea placeholder="Your Requirements (Quantity, specifications, dimensions, etc.)" rows="4" required></textarea>
+                            <button type="submit" class="submit-button">Send WhatsApp Enquiry</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LOCATION SECTION -->
+        <section class="location-section">
+            <div class="container">
+                <h2>Our Location</h2>
+                <p class="section-subtitle">Visit our manufacturing facility</p>
+                
+                <div class="location-content">
+                    <div class="location-info">
+                        <div class="location-card">
+                            <div class="location-icon">📍</div>
+                            <h3>Factory Address</h3>
+                            <p>Rsf No : 1388/1, Plot No : 31<br>
+                            Edissia Industrial Estate<br>
+                            Karur Bye Pass Road<br>
+                            Erode-638002, Tamil Nadu, India</p>
+                            
+                            <div class="location-buttons">
+                                <a href="https://maps.app.goo.gl/7TGgbejiraFcLnKp9" 
+                                   target="_blank" class="location-btn view-map">
+                                    <span class="btn-icon">🗺️</span>
+                                    View on Google Maps
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="business-hours">
+                            <div class="hours-icon">🕒</div>
+                            <h3>Working Hours</h3>
+                            <div class="hours-list">
+                                <div class="hour-item">
+                                    <span class="day">Monday - Saturday:</span>
+                                    <span class="time">24 Hours Open</span>
+                                </div>
+                                <div class="hour-item">
+                                    <span class="day">Sunday:</span>
+                                    <span class="time">Holiday (Closed)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 National Plastics. All Rights Reserved.</p>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#products">Products</a>
+                <a href="#contact">Enquiry</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Contact Buttons -->
+    <div class="floating-contact">
+        <a href="tel:+919384932216" class="float-phone" title="Call Us">📞</a>
+        <a href="https://wa.me/919384932216?text=" class="float-whatsapp" title="WhatsApp">💬</a>
+    </div>
+
+    <!-- Image Popup Modal -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <img id="modalImage" src="" alt="">
+            <div id="modalCaption"></div>
+        </div>
+    </div>
+
+    <!-- Gallery Modal -->
+    <div id="galleryModal" class="gallery-modal">
+        <div class="gallery-content">
+            <div class="gallery-header">
+                <h3 class="gallery-title" id="galleryTitle">Product Gallery</h3>
+                <span class="gallery-close" onclick="closeGallery()">&times;</span>
+            </div>
+            <div class="gallery-slider">
+                <div class="main-image-viewer">
+                    <img id="mainGalleryImage" class="main-gallery-image" src="" alt="">
+                </div>
+                <div class="gallery-images" id="galleryImages">
+                    <!-- Images will be populated by JavaScript -->
+                </div>
+                <div class="gallery-nav">
+                    <button class="gallery-nav-btn" onclick="prevImage()" id="prevBtn">❮ Previous</button>
+                    <button class="gallery-nav-btn" onclick="nextImage()" id="nextBtn">Next ❯</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
